@@ -87,6 +87,7 @@ são únicos entre os dois.
 
 | Estado | Onde é controlado? | Por quê? |
 |---|---|---|
+| `termo` | `PaginaDescobrir` (useState) | Texto da busca por nome, oferecida como barra de busca no topo do painel para quem já sabe o que quer. Quando está preenchido, a busca usa o endpoint `/search` da TMDB e os filtros são ignorados |
 | `tipo`, `humorId`, `tempoId`, `generosExtras` | `PaginaDescobrir` (useState) | Valores do formulário antes de a pessoa aplicar a busca; o humor escolhido também aparece na faixa de cabeçalho do painel de filtros |
 | `filtros` | `PaginaDescobrir` (useState) | Guarda os filtros efetivamente enviados; mudar esse valor é o gatilho do `useEffect` de busca |
 | `resultados`, `situacao`, `mensagemErro` | `PaginaDescobrir` (useState) | Resultado da busca e seu ciclo de vida (carregando/pronto/erro) |
@@ -97,7 +98,7 @@ são únicos entre os dois.
 
 | Efeito | Quando acontece? | O que faz? |
 |---|---|---|
-| Busca de sugestões | Sempre que `filtros` muda, em `PaginaDescobrir` | Chama `buscarTitulos()` na API do TMDB e atualiza `resultados`/`situacao` |
+| Busca de sugestões | Sempre que `filtros` muda, em `PaginaDescobrir` | Chama `buscarPorNome()` se houver um nome digitado, ou `buscarTitulos()` caso contrário, e atualiza `resultados`/`situacao` |
 | Busca de detalhe | Sempre que `tipo` ou `id` mudam, em `PaginaDetalhes` | Chama `buscarDetalhes()` na API do TMDB e atualiza `titulo`/`situacao` |
 | Títulos em alta | Uma vez, quando `PaginaInicio` abre | Chama `buscarEmAlta()` na API do TMDB e alimenta a parede de pôsteres |
 | Rolagem ao topo | Sempre que o caminho da rota muda, em `RolarParaTopo` | Chama `window.scrollTo(0, 0)`. Numa SPA a página não recarrega ao navegar, então sem isso a nova tela abriria na mesma altura de rolagem da anterior |

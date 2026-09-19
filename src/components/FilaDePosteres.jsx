@@ -16,7 +16,6 @@ const FilaDePosteres = ({ titulos, invertida }) => {
                         className="fila-poster"
                         src={urlImagem(titulo.poster_path, "w342")}
                         alt=""
-                        loading="lazy"
                     />
                 ))}
             </div>
@@ -28,7 +27,6 @@ const FilaDePosteres = ({ titulos, invertida }) => {
                         className="fila-poster"
                         src={urlImagem(titulo.poster_path, "w342")}
                         alt=""
-                        loading="lazy"
                     />
                 ))}
             </div>

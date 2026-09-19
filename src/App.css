@@ -215,6 +215,7 @@
   padding: 0.85rem 1.5rem;
   background: transparent;
   border: 1px solid var(--bone);
+  border-radius: 10px;
   color: var(--bone);
   text-decoration: none;
   font-size: 0.72rem;
@@ -324,6 +325,7 @@
 .fila-poster {
   width: 128px;
   aspect-ratio: 2 / 3;
+  border-radius: 8px;
   flex-shrink: 0;
   object-fit: cover;
   filter: grayscale(1) brightness(0.55) contrast(1.1);
@@ -565,6 +567,7 @@
   gap: 0.9rem;
   padding: 1.5rem;
   border: 1px solid var(--line);
+  border-radius: 12px;
   color: var(--bone-muted);
   font-size: 0.95rem;
 }
@@ -595,6 +598,8 @@
   grid-template-columns: 1fr 1fr;
   counter-reset: criterio;
   border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
   background: rgba(18, 18, 17, 0.55);
   backdrop-filter: blur(10px);
 }
@@ -670,6 +675,50 @@
   clear: both;
 }
 
+.filtros-busca {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(8, 8, 7, 0.35);
+}
+
+.busca-rotulo {
+  display: block;
+  margin-bottom: 0.85rem;
+  color: var(--bone-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.campo-texto {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--bone);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.campo-texto::placeholder {
+  color: var(--bone-faint);
+}
+
+.campo-texto:focus {
+  outline: none;
+  border-color: var(--acid);
+}
+
+.campo-aviso {
+  margin: 0.6rem 0 0;
+  color: var(--bone-faint);
+  font-size: 0.72rem;
+}
+
 .filtros-rodape {
   grid-column: 1 / -1;
   display: flex;
@@ -685,9 +734,9 @@
 }
 
 .pill {
-  padding: 0.55rem 1rem;
+  padding: 0.55rem 1.1rem;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 8px;
   background: transparent;
   color: var(--bone-muted);
   font-family: inherit;
@@ -739,6 +788,8 @@
   flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
   transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
 }
 
@@ -853,6 +904,7 @@
   gap: 1.2rem;
   padding: 3.5rem 2.5rem;
   border: 1px dashed var(--line);
+  border-radius: 12px;
   color: var(--bone-muted);
 }
 
@@ -885,6 +937,7 @@
 .details-poster-empty {
   width: 100%;
   aspect-ratio: 2 / 3;
+  border-radius: 10px;
   object-fit: cover;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -937,6 +990,7 @@
 .genre-tag {
   padding: 0.35rem 0.8rem;
   border: 1px solid var(--line);
+  border-radius: 8px;
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -956,6 +1010,7 @@
   gap: 0.6rem;
   padding: 0.9rem 1.6rem;
   border: 1px solid var(--line);
+  border-radius: 10px;
   background: transparent;
   color: var(--bone);
   font-family: inherit;
@@ -1000,6 +1055,7 @@
 .provider-logo {
   width: 46px;
   height: 46px;
+  border-radius: 8px;
   filter: grayscale(1);
   transition: filter 0.2s ease;
 }

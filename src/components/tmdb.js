@@ -78,6 +78,10 @@ export const buscarTitulos = (tipo, generos, duracaoMaxima) => {
     return buscar("/discover/" + tipo, parametros)
 }
 
+export const buscarPorNome = (tipo, termo) => {
+    return buscar("/search/" + tipo, { query: termo })
+}
+
 export const buscarEmAlta = () => {
     return buscar("/trending/all/week", {})
 }

@@ -15,8 +15,8 @@ https://letterboxd.com/films/popular/ (grade de pôsteres)
 
 ### Imagem
 
-![Referência 01 — grade de pôsteres do Letterboxd](./imagens/referencia-01-letterboxd.png)
-![Referência 02 — aba Buscar do Spotify](./imagens/referencia-01-letterboxd-detalhe.png)
+![Referência 01.1 — grade de pôsteres do Letterboxd](./imagens/referencia-01-letterboxd.png)
+![Referência 01.2 — página de detalhe do Letterboxd](./imagens/referencia-01-letterboxd-detalhe.png)
 
 ### O que observamos?
 O Letterboxd não usa listas com texto para representar filmes, usa uma
@@ -172,8 +172,8 @@ https://21st.dev/ e a categoria de fundos em https://21st.dev/s/backgrounds
 
 ### Imagem
 
-![Referência 05 — página de fundos do 21st.dev](./imagens/referencia-05-21st-fundos.png)
-![Referência 05 — galeria de componentes do 21st.dev](./imagens/referencia-05-21st-galeria.png)
+![Referência 05.1 — página de fundos do 21st.dev](./imagens/referencia-05-21st-fundos.png)
+![Referência 05.2 — galeria de componentes do 21st.dev](./imagens/referencia-05-21st-galeria.png)
 
 ### O que observamos?
 O componente mais salvo da categoria de fundos é o **Aurora Background**

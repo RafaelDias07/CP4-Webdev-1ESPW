@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { ArrowRight } from "lucide-react"
-import { buscarTitulos, GENEROS, TIPOS, HUMORES, TEMPOS } from "../components/tmdb"
+import { buscarTitulos, buscarPorNome, GENEROS, TIPOS, HUMORES, TEMPOS } from "../components/tmdb"
 import { lerMinhaLista, salvarMinhaLista, alternarItem } from "../components/minhaLista"
 import GradeTitulos from "../components/GradeTitulos"
 
 const PaginaDescobrir = () => {
 
+    const [termo, setTermo] = useState("")
     const [tipo, setTipo] = useState("movie")
     const [humorId, setHumorId] = useState(HUMORES[0].id)
     const [tempoId, setTempoId] = useState(TEMPOS[2].id)
@@ -42,7 +43,12 @@ const PaginaDescobrir = () => {
 
         setSituacao("carregando")
         setMensagemErro("")
-        setFiltros({ tipo: tipo, generos: generos, duracaoMaxima: tempo.duracaoMaxima })
+        setFiltros({
+            tipo: tipo,
+            termo: termo.trim(),
+            generos: generos,
+            duracaoMaxima: tempo.duracaoMaxima
+        })
     }
 
     useEffect(() => {
@@ -50,7 +56,14 @@ const PaginaDescobrir = () => {
             return
         }
 
-        buscarTitulos(filtros.tipo, filtros.generos, filtros.duracaoMaxima)
+        let busca
+        if (filtros.termo) {
+            busca = buscarPorNome(filtros.tipo, filtros.termo)
+        } else {
+            busca = buscarTitulos(filtros.tipo, filtros.generos, filtros.duracaoMaxima)
+        }
+
+        busca
             .then((dados) => {
                 setResultados(dados.results)
                 setSituacao("pronto")
@@ -80,6 +93,16 @@ const PaginaDescobrir = () => {
 
     const humorEscolhido = HUMORES.find((item) => item.id === humorId)
 
+    let resumo = humorEscolhido.nome
+    if (termo.trim()) {
+        resumo = "Buscando por nome"
+    }
+
+    let mensagemVazia = "Nenhum título encontrado com esses filtros. Tente remover algum gênero extra."
+    if (filtros && filtros.termo) {
+        mensagemVazia = "Nenhum título encontrado com esse nome. Confira a escrita ou tente outro termo."
+    }
+
     return (
         <div className="discover">
             <div className="page-header">
@@ -90,7 +113,24 @@ const PaginaDescobrir = () => {
             <form className="filters-form" onSubmit={aoEnviarFormulario}>
                 <div className="filtros-topo">
                     <span>Filtros</span>
-                    <span className="filtros-resumo">{humorEscolhido.nome}</span>
+                    <span className="filtros-resumo">{resumo}</span>
+                </div>
+
+                <div className="filtros-busca">
+                    <label className="busca-rotulo" htmlFor="busca-nome">
+                        Já sabe o que quer assistir?
+                    </label>
+                    <input
+                        id="busca-nome"
+                        type="text"
+                        className="campo-texto"
+                        placeholder="Buscar pelo nome do filme ou da série"
+                        value={termo}
+                        onChange={(evento) => setTermo(evento.target.value)}
+                    />
+                    <p className="campo-aviso">
+                        Preenchendo aqui, a busca usa o nome e ignora os filtros abaixo.
+                    </p>
                 </div>
 
                 <fieldset className="filter-field">
@@ -184,9 +224,7 @@ const PaginaDescobrir = () => {
                 )}
 
                 {situacao === "pronto" && resultados.length === 0 && (
-                    <p className="status-message">
-                        Nenhum título encontrado com esses filtros. Tente remover algum gênero extra.
-                    </p>
+                    <p className="status-message">{mensagemVazia}</p>
                 )}
 
                 {situacao === "pronto" && resultados.length > 0 && (

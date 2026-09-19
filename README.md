@@ -4,6 +4,10 @@ MVP de plataforma web para descobrir o que assistir, feito como avaliação
 (CP1 — 2º trimestre — WebDev) inspirado no vácuo deixado pelo
 encerramento do TV Time.
 
+**Site publicado:** https://cp-4-webdev-1-espw-lime.vercel.app
+
+**Repositório:** https://github.com/RafaelDias07/CP4-Webdev-1ESPW
+
 ## Integrantes do grupo
 
 - Luca Baccari Dos Santos — RM 569807
@@ -55,7 +59,8 @@ qualquer título em uma lista pessoal para assistir depois.
 ## Funcionalidades
 
 - **Descobrir** (`/descobrir`): formulário de filtros (tipo, humor,
-  tempo, gêneros) que busca sugestões reais na TMDB.
+  tempo, gêneros) que busca sugestões reais na TMDB. Para quem já sabe o
+  que quer, há também uma busca direta pelo nome do filme ou da série.
 - **Detalhe do título** (`/titulo/:tipo/:id`): sinopse, gêneros,
   duração, nota e onde assistir (quando disponível na API).
 - **Minha lista** (`/minha-lista`): títulos salvos, persistidos entre
@@ -76,11 +81,11 @@ Abaixo está exatamente onde ela entrou e onde não entrou.
   `docs/architecture.md`), a partir das decisões de produto que já
   tínhamos tomado: qual problema resolver, a mecânica de filtrar por
   humor e tempo, e o nome do produto.
-- Na escrita do código-base seguindo os padrões que vimos em aula —
-  componentização, props entre componentes, `useState`, `useEffect` e
-  React Router.
-- Como apoio para entender recursos de CSS que não conhecíamos, depois
-  de escolhermos as referências visuais.
+- No refinamento do design e do acabamento visual da interface, depois
+  de escolhermos as referências que queríamos seguir.
+- Na responsividade: ajustar os pontos de quebra para o layout funcionar
+  em celular, tablet e desktop.
+- Como apoio para entender recursos de CSS que não conhecíamos.
 
 ### O que decidimos sozinhos
 
@@ -94,7 +99,7 @@ parte do código.
 
 Escolhemos usar alguns recursos de CSS que não foram dados em aula,
 porque queríamos que a página tivesse um acabamento visual mais próximo
-dos sites que usamos como referência (ver `references/references.md`)
+dos sites que usamos como referência (ver `docs/references/references.md`)
 e porque achamos que valia a pena apresentar algo mais bem resolvido. São
 eles:
 
@@ -125,8 +130,8 @@ conseguirmos aplicar em outros projetos.
 
 ```bash
 # 1. Clonar o repositório
-git clone <url-do-repositorio>
-cd watchnext
+git clone https://github.com/RafaelDias07/CP4-Webdev-1ESPW.git
+cd CP4-Webdev-1ESPW
 
 # 2. Instalar dependências
 npm install
@@ -142,37 +147,3 @@ npm run dev
 # 5. Gerar build de produção (opcional, local)
 npm run build
 ```
-
-### Deploy na Vercel
-
-1. Suba o repositório para o GitHub.
-2. Importe o repositório na [Vercel](https://vercel.com/).
-3. Em **Environment Variables**, adicione `VITE_TMDB_API_KEY` com sua
-   chave da TMDB.
-4. Deploy. O framework é detectado automaticamente como Vite.
-
-## Estrutura do projeto
-
-```
-watchnext/
-├── docs/
-│   ├── requirements.md
-│   └── architecture.md
-├── references/
-│   ├── references.md
-│   └── imagens/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-├── .env.example
-└── README.md
-```
-
-Veja `docs/requirements.md` para objetivo, user stories e critérios de
-aceitação, `docs/architecture.md` para o detalhamento técnico de páginas,
-componentes, props, estados e efeitos, e `references/references.md` para
-as referências visuais que usamos.
